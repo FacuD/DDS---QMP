@@ -1,4 +1,4 @@
-package org.example;
+package org.queMePongo;
 
 public class NoEsPrendaSuperiorException extends IllegalArgumentException{
   public NoEsPrendaSuperiorException(String mensaje){

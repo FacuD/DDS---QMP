@@ -1,4 +1,4 @@
-package org.example;
+package org.queMePongo;
 
 public enum TipoPrenda {
   ANTEOJOS_DE_SOL(CategoriaPrenda.ACCESORIOS),

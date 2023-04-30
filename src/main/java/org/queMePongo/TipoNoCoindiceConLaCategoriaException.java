@@ -1,4 +1,4 @@
-package org.example;
+package org.queMePongo;
 
 public class TipoNoCoindiceConLaCategoriaException extends IllegalArgumentException{
   public TipoNoCoindiceConLaCategoriaException(String mensaje){

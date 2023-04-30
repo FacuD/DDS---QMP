@@ -1,4 +1,4 @@
-package org.example;
+package org.queMePongo;
 
 public enum CategoriaPrenda {
   PARTE_SUPERIOR,
