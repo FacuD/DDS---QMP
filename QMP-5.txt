@@ -1,0 +1,72 @@
+@startuml
+
+class Guardarropa{
+  List<Prenda> prendas;
+  TipoCriterio tipoCriterio = null;
+  +agregarPrenda(Prenda);
+  +quitarPrenda(Prenda);
+  }
+
+class PropuestasHandler{
+  List<Propuesta> propuestas;
+  List<Propuesta> propuestasAceptadas;
+
+  +tomarPropuesta(Propuesta);
+  +aceptarPropuesta(Propuesta);
+  +aceptarTodasLasPropuestas();
+  +rechazarPropuesta(Propuesta);
+  +rechazarTodasLasPropuestas();
+  +deshacerPropuesta(Propuesta);
+  +deshacerTodasLasPropuestas();
+  }
+
+
+class Usuario{
+  List<Prenda> prendas;
+  List<Guardarropa> guardarropas;
+  List<Guardarropa> guardarropasCompartidosConmigo;
+  PropuestasHandler manejadorPropuestas;
+
+  +sugerirAgregarPrendaAGuardarropas(Guardarropa,Prenda);
+  +sugerirQuitarPrendaAGuardarropas(Guardarropa,Prenda);
+  +verPropuestasDeModificacion();
+}
+
+interface Propuesta{
+  +execute();
+  +reverse();
+}
+
+class AgregarPrendaSegunPeticion implements Propuesta{
+  prenda Prenda;
+  guardarropa Guardarropa;
+
+  +execute();
+  +reverse();
+}
+
+class QuitarPrendaSegunPeticion implements Propuesta{
+  prenda Prenda;
+  guardarropa Guardarropa;
+
+  +execute();
+  +reverse();
+}
+
+enum TipoCriterio{
+  ROPA_DE_VIAJE,
+  ROPA_DE_ENTRE_CASA,
+  }
+  
+  
+Usuario-->"*"Guardarropa
+Guardarropa o-- TipoCriterio
+Guardarropa-->"*"Prenda
+Usuario-->"1" PropuestasHandler
+PropuestasHandler-->"*"Propuesta
+AgregarPrendaSegunPeticion-->"1"Prenda
+QuitarPrendaSegunPeticion-->"1"Prenda
+AgregarPrendaSegunPeticion-->"1"Guardarropa
+QuitarPrendaSegunPeticion-->"1"Guardarropa
+
+@enduml
